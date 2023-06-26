@@ -44,6 +44,7 @@ export default {
     align-items: center;
     justify-content: space-between;
     padding: 50px;
+    margin-top: 10vh;
     .site-map{
       display: flex;
       flex-direction: column;

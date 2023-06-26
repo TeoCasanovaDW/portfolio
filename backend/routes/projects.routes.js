@@ -4,5 +4,6 @@ const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json();
 
 router.get("/getAll", projectsController.getAll);
+router.get("/getProject/:id", projectsController.getProject);
 
 module.exports = router;

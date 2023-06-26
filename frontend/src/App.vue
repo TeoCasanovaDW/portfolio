@@ -105,7 +105,7 @@ section{
   justify-content: center;
   flex-direction: column;
   gap: 50px;
-  padding-top: 80px;
+  padding-top: 4vh;
 }
 
 nav{

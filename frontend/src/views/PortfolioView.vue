@@ -2,7 +2,7 @@
   <section class="portfolio">
     <h1>MES PROJETS</h1>
     <div class="projects-container">
-      <a v-for="(project, index) in this.$store.state.allProjects" :key="index" :href="'/project/'+project.project_id">
+      <a v-for="(project, index) in this.$store.state.allProjects" :href="'/project/'+project.project_id" :key="index">
         <img :src="require(`@/assets/${project.project_thumbnail_path}`)" alt="miniature projet">
       </a>
     </div>
@@ -12,6 +12,12 @@
 <script>
 export default{
   name: 'portfolioView',
+  methods: {
+    // getProject(project_id){
+    //   this.$store.commit('getProject', project_id);
+    //   this.$router.push("/project/" + project_id);
+    // }
+  },
   mounted() {
     this.$store.commit('getAllProjects');
   },
