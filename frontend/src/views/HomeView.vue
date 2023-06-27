@@ -21,16 +21,16 @@
         <div class="skill-container frontend">
           <h3>FRONT-END</h3>
           <div class="icons-container">
-            <img src="../assets/frontend_1.png" alt="logo de vue.js">
-            <img src="../assets/frontend_2.png" alt="logo de sass">
-            <img src="../assets/frontend_3.png" alt="logo de axios">
+            <img src="../assets/frontend_1.png" class="vue" alt="logo de vue.js">
+            <img src="../assets/frontend_2.png" class="sass" alt="logo de sass">
+            <img src="../assets/frontend_3.png" class="axios" alt="logo de axios">
           </div>
         </div>
         <div class="skill-container backend">
           <h3>BACK-END</h3>
           <div class="icons-container">
-            <img src="../assets/backend_1.png" alt="logo de node.js">
-            <img src="../assets/backend_2.png" alt="logo de sequelize">
+            <img src="../assets/backend_1.png" class="node" alt="logo de node.js">
+            <img src="../assets/backend_2.png" class="sequelize" alt="logo de sequelize">
           </div>
         </div>
       </div>
@@ -39,17 +39,17 @@
         <div class="skill-container developpement">
           <h3>DEVELOPPEMENT</h3>
           <div class="icons-container">
-            <img src="../assets/developpement_1.png" alt="logo de windows">
-            <img src="../assets/developpement_2.png" alt="logo de chrome">
-            <img src="../assets/developpement_3.png" alt="logo de visual studio code">
-            <img src="../assets/developpement_4.png" alt="logo de wamp">
+            <img src="../assets/developpement_1.png" class="windows" alt="logo de windows">
+            <img src="../assets/developpement_2.png" class="chrome" alt="logo de chrome">
+            <img src="../assets/developpement_3.png" class="vscode" alt="logo de visual studio code">
+            <img src="../assets/developpement_4.png" class="wamp" alt="logo de wamp">
           </div>
         </div>
         <div class="skill-container design">
           <h3>DESIGN</h3>
           <div class="icons-container">
-            <img src="../assets/design_1.png" alt="logo de figma">
-            <img src="../assets/design_2.png" alt="logo de dribbble">
+            <img src="../assets/design_1.png" class="figma" alt="logo de figma">
+            <img src="../assets/design_2.png" class="dribbble" alt="logo de dribbble">
           </div>
         </div>
       </div>
@@ -173,6 +173,30 @@ export default {
           display: flex;
           align-items: center;
           justify-content: space-around;
+          .vue{
+            width: 20%;
+          }
+          .sass{
+            width: 27%;
+          }
+          .axios{
+            width: 33%;
+          }
+          .node{
+            width: 35%;
+          }
+          .sequelize{
+            width: 35%;
+          }
+          .windows, .chrome,.vscode, .wamp{
+            width: 15%;
+          }
+          .figma{
+            width: 23%;
+          }
+          .dribbble{
+            width: 40%;
+          }
         }
       }
     }
@@ -181,7 +205,7 @@ export default {
   section.recommendations{
     h2{
       margin: 25px auto;
-      font-size: 1.4em;
+      font-size: 1.6em;
     }
     .reco-container{
       display: flex;

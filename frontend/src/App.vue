@@ -3,16 +3,16 @@
     <nav>
       <ul>
         <li>
-          <router-link to="/">ACCUEIL</router-link>
+          <router-link to="/" data-replace="ACCUEIL"><span>ACCUEIL</span></router-link>
         </li>
         <li>
-          <router-link to="/portfolio">PROJETS</router-link>
+          <router-link to="/portfolio" data-replace="PROJETS"><span>PROJETS</span></router-link>
         </li>
         <li>
-          <router-link to="/about">A PROPOS</router-link>
+          <router-link to="/about" data-replace="A PROPOS"><span>A PROPOS</span></router-link>
         </li>
         <li>
-          <router-link to="/contact">CONTACT</router-link>
+          <router-link to="/contact" data-replace="CONTACT"><span>CONTACT</span></router-link>
         </li>
       </ul>
     </nav>
@@ -94,6 +94,7 @@ h1{
   font-weight: 900;
   font-size: 2em;
   letter-spacing: 0.1em;
+  word-spacing: 12px;
   padding: 25px 0;
   margin: 0 auto;
   width: fit-content;
@@ -119,6 +120,7 @@ nav{
   left: 0;
   background-color: var(--dark-color);
   z-index: 99;
+  box-shadow: 0px 0px 8px 4px var(--light-color);
   ul{
     display: flex;
     align-items: center;
@@ -131,25 +133,62 @@ nav{
         opacity: .7;
         font-weight: 600;
         font-size: 1.3em;
-        position: relative;
-        transition: .4s;
-        &::after{
-          content: "";
-          display: block;
-          position: absolute;
-          bottom: -5px;
-          width: 0%;
-          left: 0;
-          height: 2px;
-          background-color: var(--light-color);
+        overflow: hidden;
+        line-height: 1.2em;
+        &, span{
+          position: relative;
+          display: inline-block;
           transition: .4s;
         }
+        span{
+          padding: 3px 0;
+          transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+        &:hover span{
+          transform: translateX(-200%);
+        }
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          left: 0;
+          transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+        &::after{
+          content: attr(data-replace);
+          top: 0;
+          transform-origin: 100% 50%;
+          transform: translateX(200%);
+        }
+        &::before{
+          background-color: var(--light-color);
+          height: 2px;
+          bottom: 0;
+          transform-origin: 100% 50%;
+          transform: scaleX(0);
+        }
+        &:hover::after{
+            transform: translate(0, 0);
+        }
+        &:hover::before{
+            transform-origin: 0% 50%;
+            transform: scaleX(1);
+        }
+        
         &.router-link-active,
         &:hover{
           opacity: 1;
-          &::after{
-            width: 100%;
+          span{
+            transform: translateX(-200%);
           }
+          &::after{
+            transform: translate(0, 0);
+          }
+          &::before{
+            transform-origin: 0% 50%;
+            transform: scaleX(1);
+        }
         }
       }
     }

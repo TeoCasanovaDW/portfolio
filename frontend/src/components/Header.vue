@@ -24,7 +24,7 @@ header{
     justify-content: center;
     width: 100%;
     gap: 4vw;
-    padding-top: 50px;
+    padding: 8vh 0;
     .header-text{
       display: flex;
       flex-direction: column;
