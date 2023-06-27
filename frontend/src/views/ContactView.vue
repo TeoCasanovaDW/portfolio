@@ -5,15 +5,19 @@
     <form action="#" class="contact-form">
         <div class="input-container">
           <label for="lastname">Nom</label>
-          <input type="text" name="lastname" id="lastname">
+          <input type="text" name="contact_lastname" id="contact_lastname">
         </div>
         <div class="input-container">
           <label for="firstname">Prénom</label>
-          <input type="text" name="firstname" id="firstname">
+          <input type="text" name="contact_firstname" id="contact_firstname">
+        </div>
+        <div class="input-container">
+          <label for="firstname">Votre mail</label>
+          <input type="email" name="contact_mail" id="contact_mail">
         </div>
         <div class="input-container">
           <label for="message">Message</label>
-          <textarea type="text" name="message" id="message"></textarea>
+          <textarea type="text" name="contact_message" id="contact_message"></textarea>
         </div>
         <button type="submit" class="cta">Envoyer</button>
       </form>
@@ -41,6 +45,7 @@ export default{
     align-items: center;
     justify-content: center;
     gap: 10%;
+    max-width: 800px;
     width: 70vw;
     flex-wrap: wrap;
     .input-container{

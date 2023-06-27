@@ -6,9 +6,9 @@
     <section class="last_projects">
       <h1>DERNIERS PROJETS</h1>
       <div class="cards-container">
-        <img src="../assets/restaurant_administrable.png" alt="">
-        <img src="../assets/type_train.png" alt="">
-        <img src="../assets/gite_moisson.png" alt="">
+        <a v-for="(project, index) in this.$store.state.lastProjects" :href="'/project/'+project.project_id" :key="index">
+          <img :src="require(`@/assets/${project.project_thumbnail_path}`)" alt="">
+        </a>
       </div>
       <button class="cta">Voir plus</button>
     </section>
@@ -58,13 +58,15 @@
     <!-- RECOMMANDATIONS -->
     <section class="recommendations">
       <h1>RECOMMANDATIONS</h1>
+      <!-- <div class="reco-container" v-for="(reco, index) in this.$store.state.allReco" :key="index"> -->
+       {{ this.$store.state.allReco }}
       <div class="reco-container">
         <div class="reco">
           <h2>Cécile B.</h2>
           <p>Téo a su répondre à mes attentes professionnelles pour la conception de mon site web. Il a également été à l'initiative de propositions pertinentes qui sont venues finaliser mon projet de création. Je le recommande vivement!</p>
         </div>
         <div class="reco">
-          <h2>Laurent D.</h2>
+          <h2></h2>
           <p>Téo a su répondre à mes attentes professionnelles pour la conception de mon site web. Il a également été à l'initiative de propositions pertinentes qui sont venues finaliser mon projet de création. Je le recommande vivement!</p>
         </div>
         <div class="reco">
@@ -74,21 +76,21 @@
       </div>
 
       <h2>AJOUTER UNE RECOMMANDATION</h2>
-      <form action="#" class="add-recommandation">
+      <div class="add-recommandation">
         <div class="input-container">
-          <label for="lastname">Nom</label>
-          <input type="text" name="lastname" id="lastname">
+          <label for="reco_author_lastname">Nom</label>
+          <input type="text" name="reco_author_lastname" id="reco_author_lastname" v-model="this.reco.reco_author_lastname">
         </div>
         <div class="input-container">
-          <label for="firstname">Prénom</label>
-          <input type="text" name="firstname" id="firstname">
+          <label for="reco_author_firstname">Prénom</label>
+          <input type="text" name="reco_author_firstname" id="reco_author_firstname" v-model="this.reco.reco_author_firstname">
         </div>
         <div class="input-container">
-          <label for="message">Message</label>
-          <textarea type="text" name="message" id="message"></textarea>
+          <label for="reco_description">Message</label>
+          <textarea type="text" name="reco_description" id="reco_description" v-model="this.reco.reco_description"></textarea>
         </div>
-        <button type="submit" class="cta">Envoyer</button>
-      </form>
+        <button class="cta" @click="sendReco()">Envoyer</button>
+      </div>
     </section>
   </main>
 </template>
@@ -98,8 +100,26 @@ import Header from "@/components/Header";
 
 export default {
   name: 'HomeView',
+  data(){
+    return{
+      reco: {
+        reco_author_firstname: "",
+        reco_author_lastname: "",
+        reco_description: ""
+      }
+    }
+  },
   components: {
     Header
+  },
+  methods: {
+    sendReco(){
+      this.$store.commit('addRecommandation', this.reco);
+    }
+  },
+  mounted(){
+    this.$store.commit('getLastProjects');
+    this.$store.commit('getAllReco');
   }
 }
 </script>
@@ -112,8 +132,11 @@ export default {
       align-items: center;
       justify-content: space-between;
       width: 96vw;
-      img{
+      a{
         width: 32%;
+        img{
+          width: 100%;
+        }
       }
     }
   }
@@ -190,12 +213,13 @@ export default {
         }
       }
     }
-    form{
+    .add-recommandation{
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10%;
       width: 70vw;
+      max-width: 800px;
       flex-wrap: wrap;
       .input-container{
         width: 100%;

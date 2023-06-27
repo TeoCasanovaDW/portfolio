@@ -4,6 +4,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 require("dotenv").config({ path: "./config/.env" });
 const projectsRoutes = require("./routes/projects.routes");
+const recommandationsRoutes = require("./routes/recommandations.routes");
 
 const app = express();
 app.use(cookieParser());
@@ -17,6 +18,7 @@ app.use(
 
 // ROUTES
 app.use("/api/projects", projectsRoutes);
+app.use("/api/recommandations", recommandationsRoutes);
 
 app.listen(process.env.PORT, () => {
    console.log(`Server is listening on port ${process.env.PORT}`);

@@ -34,3 +34,21 @@ module.exports.getProject = async (req, res) => {
       });
    }
 };
+
+
+// GET LAST PROJECTS \\
+module.exports.getLastProjects = async (req, res) => {
+   try {
+      const infos = await ProjectsModel.findAll({
+         limit: 3,
+         order: [["creation_date", "DESC"]],
+      });
+      console.log(infos);
+      res.status(200).send(infos);
+   } catch (err) {
+      console.error(err);
+      res.status(500).json({
+         message: "Problème lors de la récupération des derniers projets",
+      });
+   }
+};
