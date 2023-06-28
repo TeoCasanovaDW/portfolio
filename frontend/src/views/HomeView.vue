@@ -7,10 +7,11 @@
       <h1>DERNIERS PROJETS</h1>
       <div class="cards-container">
         <a v-for="(project, index) in this.$store.state.lastProjects" :href="'/project/'+project.project_id" :key="index">
+          <span>{{ project.project_title }}</span>
           <img :src="require(`@/assets/${project.project_thumbnail_path}`)" alt="">
         </a>
       </div>
-      <button class="cta">Voir plus</button>
+      <button class="cta" @click="this.$router.push('/portfolio')">Voir plus</button>
     </section>
     
     <!-- COMPÉTENCES ET ENVIRONNEMENT -->
@@ -131,8 +132,35 @@ export default {
       width: 96vw;
       a{
         width: 32%;
+        height: fit-content;
+        position: relative;
+        transition: .4s;
+        overflow: hidden;
+        border-radius: 15px;
+        &:hover{
+          transform: translateY(-5px);
+          span {
+            transform: translateY(0);
+          }
+        }
+        span{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          padding: 10px 0;
+          background-color: rgba(235, 251, 255, .8);
+          text-align: center;
+          text-transform: uppercase;
+          color: var(--dark-color);
+          font-weight: 800;
+          z-index: 50;
+          transform: translateY(-100%);
+          transition: .4s;
+        }
         img{
           width: 100%;
+          border-radius: 15px;
         }
       }
     }
