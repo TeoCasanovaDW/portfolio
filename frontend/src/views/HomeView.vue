@@ -21,16 +21,13 @@
         <div class="skill-container frontend">
           <h3>FRONT-END</h3>
           <div class="icons-container">
-            <img src="../assets/frontend_1.png" class="vue" alt="logo de vue.js">
-            <img src="../assets/frontend_2.png" class="sass" alt="logo de sass">
-            <img src="../assets/frontend_3.png" class="axios" alt="logo de axios">
+            <img src="../assets/frontend.png" class="vue" alt="logo de vue.js">
           </div>
         </div>
         <div class="skill-container backend">
           <h3>BACK-END</h3>
           <div class="icons-container">
-            <img src="../assets/backend_1.png" class="node" alt="logo de node.js">
-            <img src="../assets/backend_2.png" class="sequelize" alt="logo de sequelize">
+            <img src="../assets/backend.png" class="node" alt="logo de node.js">
           </div>
         </div>
       </div>
@@ -39,17 +36,13 @@
         <div class="skill-container developpement">
           <h3>DEVELOPPEMENT</h3>
           <div class="icons-container">
-            <img src="../assets/developpement_1.png" class="windows" alt="logo de windows">
-            <img src="../assets/developpement_2.png" class="chrome" alt="logo de chrome">
-            <img src="../assets/developpement_3.png" class="vscode" alt="logo de visual studio code">
-            <img src="../assets/developpement_4.png" class="wamp" alt="logo de wamp">
+            <img src="../assets/developpement.png" class="windows" alt="logo de windows">
           </div>
         </div>
         <div class="skill-container design">
           <h3>DESIGN</h3>
           <div class="icons-container">
-            <img src="../assets/design_1.png" class="figma" alt="logo de figma">
-            <img src="../assets/design_2.png" class="dribbble" alt="logo de dribbble">
+            <img src="../assets/design.png" class="figma" alt="logo de figma">
           </div>
         </div>
       </div>
@@ -61,6 +54,10 @@
       <!-- <div class="reco-container" v-for="(reco, index) in this.$store.state.allReco" :key="index"> -->
        {{ this.$store.state.allReco }}
       <div class="reco-container">
+        <div class="reco" v-for="(reco, index) in this.$store.state.allReco" :key="index">
+          <h2>{{ reco.reco_author_firstname + ' ' + reco.reco_author_lastname }}</h2>
+          <p>{{ reco.reco_description }}</p>
+        </div>
         <div class="reco">
           <h2>Cécile B.</h2>
           <p>Téo a su répondre à mes attentes professionnelles pour la conception de mon site web. Il a également été à l'initiative de propositions pertinentes qui sont venues finaliser mon projet de création. Je le recommande vivement!</p>
@@ -156,9 +153,9 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        gap: 25px;
+        justify-content: space-between;
         width: 42%;
+        height: 150px;
         padding: 25px;
         background-color: var(--light-color);
         border-radius: 25px;
@@ -169,33 +166,12 @@ export default {
           padding-bottom: 25px;
         }
         .icons-container{
-          width: 80%;
+          width: 75%;
           display: flex;
           align-items: center;
           justify-content: space-around;
-          .vue{
-            width: 20%;
-          }
-          .sass{
-            width: 27%;
-          }
-          .axios{
-            width: 33%;
-          }
-          .node{
-            width: 35%;
-          }
-          .sequelize{
-            width: 35%;
-          }
-          .windows, .chrome,.vscode, .wamp{
-            width: 15%;
-          }
-          .figma{
-            width: 23%;
-          }
-          .dribbble{
-            width: 40%;
+          img{
+            width: 100%;
           }
         }
       }
