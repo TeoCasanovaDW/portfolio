@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+
+  front:
+    container_name: container_front
+    build: ./frontend
+    ports:
+      - "8080:8080"
+    networks:
+      - my-networks
+
+  back:
+    container_name: container_back
+    build: ./backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    networks:
+      - my-networks
+
+  mysql:
+    container_name: container_mysql
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    volumes:
+      - ./db-data:/var/lib/mysql
+      - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    networks:
+      - my-networks
+
+  phpmyadmin:
+    container_name: container_pma
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: myuser
+      PMA_PASSWORD: mypassword
+    ports:
+      - "8081:80"
+    depends_on:
+      - mysql
+    networks:
+      - my-networks
+
+networks:
+  my-networks:
