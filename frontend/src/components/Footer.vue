@@ -4,7 +4,7 @@
     <div class="site-map">
       <h3>Liens utiles</h3>
       <a href="/" data-replace="Accueil"><span>Accueil</span></a>
-      <a href="/projects" data-replace="Projets"><span>Projets</span></a>
+      <a href="/portfolio" data-replace="Projets"><span>Projets</span></a>
       <a href="/about" data-replace="A propos"><span>A propos</span></a>
       <a href="/contact" data-replace="Contact"><span>Contact</span></a>
     </div>

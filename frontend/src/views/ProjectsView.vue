@@ -1,7 +1,8 @@
 <template>
   <section class="projects">
     <h1>{{ actualProject.project_title }}</h1>
-    <img :src="require(`@/assets/${actualProject.project_thumbnail_path}`)" alt="miniature projet">
+    <img v-if="actualProject.project_thumbnail_path == 'mon_activite.png' || actualProject.project_thumbnail_path == 'assistance_technique.png'" :src="require(`@/assets/${actualProject.project_thumbnail_path}`)" alt="miniature projet">
+    <video v-else :src="require(`@/assets/videos/${actualProject.project_video_path}`)" autoplay loop></video>
 
     <div class="labels">
       <div class="timing">
@@ -60,6 +61,11 @@ export default {
   .project-description{
     width: 80vw;
     font-size: 1.2em;
+  }
+  
+  video{
+    width: 80vw;
+    border-radius: 25px;
   }
   h1{
     text-transform: uppercase;

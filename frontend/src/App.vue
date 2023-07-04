@@ -44,6 +44,14 @@ export default{
   font-family: 'Inter', sans-serif;
 }
 
+ol{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 75vw;
+    margin: 0 auto;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 1.3vw;
